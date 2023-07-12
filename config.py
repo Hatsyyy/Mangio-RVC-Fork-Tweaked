@@ -29,6 +29,8 @@ class Config:
             self.iscolab,
             self.noparallel,
             self.noautoopen,
+            self.paperspace,
+            self.is_cli,
         ) = self.arg_parse()
         self.x_pad, self.x_query, self.x_center, self.x_max = self.device_config()
 
