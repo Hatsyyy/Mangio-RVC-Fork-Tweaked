@@ -27,7 +27,6 @@ elif torch.backends.mps.is_available():
 
 f = open("%s/extract_f0_feature.log" % exp_dir, "a+")
 
-
 def printt(strr):
     print(strr)
     f.write("%s\n" % strr)
@@ -116,7 +115,7 @@ else:
                 else:
                     printt("%s-contains nan" % file)
                 if idx % n == 0:
-                    printt("now-%s,all-%s,%s,%s" % (len(todo), idx, file, feats.shape))
+                    printt("now-%s,all-%s,%s,%s" % (idx, len(todo), file, feats.shape))
         except:
             printt(traceback.format_exc())
     printt("all-feature-done")
