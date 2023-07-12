@@ -8,4 +8,4 @@
 > Well known and loved. Gotta compare it with recently added rmvpe  
 
 ### Contact me if you encounter any issues ( This fork related, not RVC )
-> Discord:   .codename0.
+> Discord:   ㅤ.codename0.
