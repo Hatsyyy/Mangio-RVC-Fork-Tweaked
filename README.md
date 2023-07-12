@@ -1,1 +1,3 @@
-Up to Date Mangio RVC fork
+- Codename0 tweaks ( Ranger optimizer n such exp. tweaks )
+- Mangio's RVC Crepe implementation
+- Newest changes from official RVC ( Incl. AMD support - In terms of compatibility, not sure how it'll react with mangio's crepe tho)
