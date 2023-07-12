@@ -7,5 +7,5 @@
 - Mangio's RVC Crepe implementation
 > Well known and loved. Gotta compare it with recently added rmvpe  
 
-### Contact me if you encounter any issues ( This fork related, not RVC ) via discord:
-> .codename0.
+### Contact me if you encounter any issues ( This fork related, not RVC )
+> Discord:   .codename0.
