@@ -29,8 +29,6 @@ class Config:
             self.iscolab,
             self.noparallel,
             self.noautoopen,
-            self.paperspace,
-            self.is_cli,
         ) = self.arg_parse()
         self.x_pad, self.x_query, self.x_center, self.x_max = self.device_config()
 
@@ -39,9 +37,7 @@ class Config:
         exe = sys.executable or "python"
         parser = argparse.ArgumentParser()
         parser.add_argument("--port", type=int, default=7865, help="Listen port")
-        parser.add_argument(
-            "--pycmd", type=str, default="python", help="Python command"
-        )
+        parser.add_argument("--pycmd", type=str, default=exe, help="Python command")
         parser.add_argument("--colab", action="store_true", help="Launch in colab")
         parser.add_argument(
             "--noparallel", action="store_true", help="Disable parallel processing"
