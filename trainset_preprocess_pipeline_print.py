@@ -32,17 +32,17 @@ class PreProcess:
     def __init__(self, sr, exp_dir):
         self.slicer = Slicer(
             sr=sr,
-            threshold=-42,
+            threshold=-60,
             min_length=1500,
             min_interval=400,
-            hop_size=15,
+            hop_size=120,
             max_sil_kept=500,
         )
         self.sr = sr
         self.bh, self.ah = signal.butter(N=5, Wn=48, btype="high", fs=self.sr)
-        self.per = 3.0
-        self.overlap = 0.3
-        self.tail = self.per + self.overlap
+        self.per = 0.24
+        self.overlap = 0.12
+        self.tail = self.per - self.overlap
         self.max = 0.9
         self.alpha = 0.75
         self.exp_dir = exp_dir
