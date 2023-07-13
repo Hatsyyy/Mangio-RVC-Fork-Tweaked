@@ -10,7 +10,7 @@ from fairseq import checkpoint_utils
 from vc_infer_pipeline import VC
 import traceback
 from config import Config
-from infer_pack.models import (
+from lib.infer_pack.models import (
     SynthesizerTrnMs256NSFsid,
     SynthesizerTrnMs256NSFsid_nono,
     SynthesizerTrnMs768NSFsid,
