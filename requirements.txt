@@ -27,6 +27,7 @@ tensorboard-data-server
 tensorboard-plugin-wit
 torchgen>=0.0.1
 torch==2.0.0
+torch-optimizer==0.3.0
 tqdm>=4.63.1
 tornado>=6.1
 Werkzeug>=2.2.3
