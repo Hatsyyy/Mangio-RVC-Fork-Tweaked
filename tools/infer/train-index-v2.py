@@ -64,3 +64,9 @@ faiss.write_index(
 """
 大小（都是FP32）
 big_src_feature 2.95G
+    (3098036, 256)
+big_emb         4.43G
+    (6196072, 192)
+big_emb双倍是因为求特征要repeat后再加pitch
+
+"""
