@@ -11,10 +11,11 @@ os.environ["CUDA_VISIBLE_DEVICES"] = hps.gpus.replace("-", ",")
 n_gpus = len(hps.gpus.split("-"))
 from random import shuffle, randint
 import traceback, json, argparse, itertools, math, torch, pdb
+import torch_optimizer as optim
 
 torch.backends.cudnn.deterministic = False
 torch.backends.cudnn.benchmark = False
-from torch import nn, optim
+from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
@@ -153,18 +154,24 @@ def run(rank, n_gpus, hps):
     net_d = MultiPeriodDiscriminator(hps.model.use_spectral_norm)
     if torch.cuda.is_available():
         net_d = net_d.cuda(rank)
-    optim_g = torch.optim.AdamW(
+    optim_g = optim.DiffGrad(
         net_g.parameters(),
         hps.train.learning_rate,
         betas=hps.train.betas,
         eps=hps.train.eps,
+        weight_decay=0,
     )
-    optim_d = torch.optim.AdamW(
+    optim_d = optim.DiffGrad(
         net_d.parameters(),
         hps.train.learning_rate,
         betas=hps.train.betas,
         eps=hps.train.eps,
+        weight_decay=0,
     )
+    lookahead_optim_g = optim.Lookahead(optim_g, k=5, alpha=0.5)
+    lookahead_optim_d = optim.Lookahead(optim_d, k=5, alpha=0.5)
+    lookahead_optim_g.step()
+    lookahead_optim_d.step()
     # net_g = DDP(net_g, device_ids=[rank], find_unused_parameters=True)
     # net_d = DDP(net_d, device_ids=[rank], find_unused_parameters=True)
     if torch.cuda.is_available():
